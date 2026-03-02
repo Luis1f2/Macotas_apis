@@ -19,6 +19,10 @@ async function startServer() {
         console.log("Server running on port " + (process.env.PORT || 3000));
     });
 
+    app.get("/", (_, res) => {
+        res.status(200).json({ message: "Conectado a api!" });
+    });
+
     app.use("/users",UsersRoutes);
     app.use("/professional-profiles",ProfessionalProfileRoutes);
     app.use("/pets",PetRoutes);

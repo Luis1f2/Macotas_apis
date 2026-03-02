@@ -13,13 +13,13 @@ export class LoginUser {
         const user = await this.repository.findByEmail(data.email);
 
     if (!user) {
-        throw new Error("Invalid credentials");
+        throw new Error("Muy Mal, no se encuentra el usuario");
         }
 
     const match = await bcrypt.compare(data.password, user.password);
 
     if (!match) {
-        throw new Error("Invalid credentials");
+        throw new Error("💀💀💀💀💀💀💀💀");
         }
 
     return {
