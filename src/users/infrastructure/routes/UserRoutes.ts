@@ -10,9 +10,8 @@ const authController = new AuthController();
 const updateController = new UpdateUserController();
 const deleteController = new DeleteUserController();
 
-router.post("/", controller.create);
-router.post("/login", authController.login);
-router.put("/:id", updateController.handle);
-router.delete("/:id", deleteController.handle);
-
+router.post("/", (req, res) => controller.create(req, res));
+router.post("/login", (req, res) => authController.login(req, res));
+router.put("/:id", (req, res) => updateController.handle(req, res));
+router.delete("/:id", (req, res) => deleteController.handle(req, res));
 export default router;

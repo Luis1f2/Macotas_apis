@@ -2,6 +2,8 @@ import "dotenv/config";
 import express from "express";
 import { pool } from "./config/MySqlConnect";
 import UsersRoutes from "./users/infrastructure/routes/UserRoutes";
+import ProfessionalProfileRoutes  from "./professional_profiles/infrastructure/routes/ProfessionalProfileRoutes";
+import PetRoutes from "./pet/infrastructure/routes/RoutestPet";
 
 const app = express();
 app.use(express.json());
@@ -18,6 +20,9 @@ async function startServer() {
     });
 
     app.use("/users",UsersRoutes);
+    app.use("/professional-profiles",ProfessionalProfileRoutes);
+    app.use("/pets",PetRoutes);
+
 
     } catch (error) {
     console.error("Database connection failed:", error);
@@ -32,10 +37,6 @@ app.get("/health", async (_, res) => {
     res.status(500).json({ status: "DB DOWN" });
     }
 });
-
-
-
-
 
 }
 
